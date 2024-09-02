@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "pet_upgrade",
+	"version": "${version}",
+	"name": "Pet Upgrade",
+	"description": "Adds extra features to pets to make them less vulnerable and more dynamic!",
+	"authors": [
+		"Jolkert"
+	],
+	"contact": {
+		"website": "https://jolkert.dev/",
+		"repo": "https://github.com/Jolkert/pet_upgrade"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/pet_upgrade/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"dev.jolkert.pet_upgrade.client.PetUpgradeClient"
+		],
+		"main": [
+			"dev.jolkert.pet_upgrade.PetUpgrade"
+		]
+	},
+	"mixins": [
+		"pet_upgrade.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"fabric": "*",
+		"minecraft": "${minecraft_version}"
+	}
+}
