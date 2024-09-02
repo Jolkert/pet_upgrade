@@ -16,10 +16,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"dev.jolkert.pet_upgrade.client.PetUpgradeClient"
+			{
+				"adapter": "kotlin",
+				"value": "dev.jolkert.petupgrade.client.PetUpgradeClientKt::init"
+			}
 		],
 		"main": [
-			"dev.jolkert.pet_upgrade.PetUpgrade"
+			{
+				"adapter": "kotlin",
+				"value": "dev.jolkert.petupgrade.PetUpgradeKt::init"
+			}
 		]
 	},
 	"mixins": [
