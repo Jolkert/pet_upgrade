@@ -4,7 +4,8 @@
 	"package": "dev.jolkert.petupgrade.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"AnimalInteractMixin",
+		"AnimalInteractionHookMixin",
+		"EntityDamageHandlerMixin",
 		"TameableInteractionMixin"
 	],
 	"client": [
