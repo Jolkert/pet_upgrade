@@ -9,18 +9,13 @@ import net.minecraft.util.Hand
 
 fun petAnimal(animal: TameableEntity, player: PlayerEntity, hand: Hand): ActionResult?
 {
-	if (animal.isTamed && player.getStackInHand(hand).isEmpty && player.isSneaking)
-	{
-		val dx = animal.random.nextGaussian() * 0.02
-		val dy = animal.random.nextGaussian() * 0.02
-		val dz = animal.random.nextGaussian() * 0.02
+	if (!(animal.isTamed && player.getStackInHand(hand).isEmpty && player.isSneaking))
+		return null
 
-		animal.playAmbientSound()
-
-		val world = animal.world
+	animal.playAmbientSound()
+	animal.world.let { world ->
 		if (!world.isClient && world is ServerWorld)
 		{
-			println("waow!")
 			world.spawnParticles(
 				ParticleTypes.HEART,
 				animal.x,
@@ -33,10 +28,7 @@ fun petAnimal(animal: TameableEntity, player: PlayerEntity, hand: Hand): ActionR
 				0.0
 			)
 		}
-		return ActionResult.SUCCESS
 	}
-	else
-	{
-		return null
-	}
+
+	return ActionResult.SUCCESS
 }
