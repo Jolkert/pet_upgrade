@@ -1,16 +1,18 @@
 package dev.jolkert.petupgrade.mixinimpl
 
+import   net.minecraft.entity.passive.AnimalEntity
 import net.minecraft.entity.passive.TameableEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
 
-fun petAnimal(animal: TameableEntity, player: PlayerEntity, hand: Hand): ActionResult?
+fun petAnimal(animal: AnimalEntity, player: PlayerEntity, hand: Hand, cir: CallbackInfoReturnable<ActionResult>)
 {
-	if (!(animal.isTamed && player.getStackInHand(hand).isEmpty && player.isSneaking))
-		return null
+	if (!(animal is TameableEntity && animal.isTamed && player.getStackInHand(hand).isEmpty && player.isSneaking))
+		return
 
 	animal.playAmbientSound()
 	animal.world.let { world ->
@@ -30,5 +32,5 @@ fun petAnimal(animal: TameableEntity, player: PlayerEntity, hand: Hand): ActionR
 		}
 	}
 
-	return ActionResult.SUCCESS
+	cir.returnValue = ActionResult.SUCCESS
 }
