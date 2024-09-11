@@ -6,7 +6,8 @@
 	"mixins": [
 		"AnimalInteractionHookMixin",
 		"EntityDamageHandlerMixin",
-		"ParrotPettingFixMixin"
+		"ParrotPettingFixMixin",
+		"SittingStateUpdateMixin"
 	],
 	"client": [
 	],
